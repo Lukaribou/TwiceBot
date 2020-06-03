@@ -1,0 +1,27 @@
+{
+  "scripts": {
+    "start": "node ."
+  },
+  "main": "out/index.js",
+  "name": "twicebot",
+  "description": "Discord bot for Twice fans",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lukaribou/TwiceBot.git"
+  },
+  "keywords": [
+    "twice",
+    "discord-bot"
+  ],
+  "author": "Lukaribou",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lukaribou/TwiceBot/issues"
+  },
+  "homepage": "https://github.com/Lukaribou/TwiceBot#readme",
+  "dependencies": {
+    "@types/node": "^14.0.9",
+    "discord.js": "^12.2.0"
+  }
+}
