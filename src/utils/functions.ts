@@ -1,4 +1,5 @@
 import { writeFile } from "fs"
+import { bot } from "..";
 
 /**
  * Sauvegarde la base de données donnée
@@ -19,4 +20,11 @@ export function random(min: number, max: number): number {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+/**
+ * Renvoie une invitation pour ajouter le bot à un serveur
+ */
+export function generateBotInvitation(): string {
+    return `https://discord.com/oauth2/authorize?client_id=${bot.user.id}&scope=bot&permissions=70642753`;
 };
