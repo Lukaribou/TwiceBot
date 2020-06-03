@@ -3,7 +3,7 @@ import { Message } from 'discord.js'
 import { Command, EMOJIS } from './utils/structs'
 
 export function onReady(): void {
-    console.log(`Connecté sur ${bot.guilds.cache.first()}, ${bot.guilds.cache.first().memberCount} membres et ${bot.guilds.cache.first().channels.cache.size} salons.`);
+    console.log(`Connecté sur ${bot.guilds.cache.size} serveur(s).`);
 };
 
 export async function onMessage(message: Message): Promise<void> {

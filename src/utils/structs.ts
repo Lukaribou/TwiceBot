@@ -22,8 +22,8 @@ export interface CommandParams {
 export class Config {
     token: string = confdb.token;
     ownerId: string = confdb.ownerId;
-    adminsId: string[] = confdb.adminsId
     prefix: string = confdb.prefix;
+    youtubeKey: string = confdb.youtubeKey
 };
 
 export enum EMOJIS {

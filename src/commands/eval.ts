@@ -2,8 +2,8 @@ import { Command, CommandParams } from "../utils/structs";
 
 export default class EvalCommand extends Command {
     name = 'eval';
-    desc = 'Evalue le code donné en paramètre';
-    categorie = 'Système';
+    desc = 'Evaluates the code given in parameter';
+    categorie = 'System';
     usage = 'eval <code>';
     ownerOnly = true;
 
@@ -22,7 +22,7 @@ export default class EvalCommand extends Command {
                 args.message.channel.send({
                     embed: {
                         color: 3066993,
-                        description: "**📥 Code :\n" + toEval + "\n:outbox_tray: Résultat : `\n" + evaluated + "`**",
+                        description: "**📥 Code :\n" + toEval + "\n:outbox_tray: Result : `\n" + evaluated + "`**",
                         timestamp: Date.now(),
                     }
                 });
