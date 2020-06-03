@@ -7,6 +7,6 @@ export default class SearchCommand extends Command {
     categorie: string;
 
     async execute(args: CommandParams): Promise<void> {
-        
+        args.bot.ytbAPI.searchSong(['twice', ...args.args].join(' ')).then(c => console.log(c))
     };
 };
