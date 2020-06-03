@@ -2,19 +2,18 @@ import { Client, Collection } from "discord.js";
 import { Command, Config } from "./utils/structs";
 import { readdir } from "fs";
 import { onReady, onMessage } from "./events";
+import YTBAPI from "./utils/ytbapi";
 
 export class Bot extends Client { // extends Client = hérite des propriétés et méthodes de Discord.Client
     public commands: Collection<string, Command> = new Collection();
     public aliases: Collection<string, Command> = new Collection();
-    public prefix: string = undefined;
-    public ownerId: string = undefined;
     public config: Config = undefined;
+    public ytbAPI: YTBAPI = undefined;
 
     constructor(config: Config) {
         super({ disableMentions: 'everyone' }); // On empêche le bot de pouvoir faire des @everyone
-        this.ownerId = config.ownerId;
-        this.prefix = config.prefix;
         this.config = config;
+        this.ytbAPI = new YTBAPI(this.config.youtubeKey);
 
         this.run();
     };
