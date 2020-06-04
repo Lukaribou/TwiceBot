@@ -13,14 +13,13 @@ export default class HelpCommand extends Command {
             .set('Twice', '😍')
             .set('Informations', 'ℹ️')
             .set('Other', '🤷‍♀️')
-            .set('Moderation', EMOJIS.ADMINSEMOJI)
             .set('System', '🔧');
 
         if (args.args.length === 0) {
             var categories: Collection<string, Command[]> = new Collection<string, Command[]>();
 
             // Fetch les catégories
-            args.bot.commands.forEach(c => categories.has(c.categorie) ? categories.set(c.categorie, categories.get(c.categorie).concat([c])) : categories.set(c.categorie, [c]));
+            args.bot.commands.filter(x => x.categorie != undefined).forEach(c => categories.has(c.categorie) ? categories.set(c.categorie, categories.get(c.categorie).concat([c])) : categories.set(c.categorie, [c]));
 
             categories = new Collection([...categories.entries()].sort()); // Sort la collection en fonction de l'alphabet sur la clé
 
@@ -29,7 +28,7 @@ export default class HelpCommand extends Command {
                 .setThumbnail(args.bot.user.avatarURL())
                 .setFooter(`${args.bot.commands.size} commands available.`);
 
-            categories.forEach((categ: Command[], name: string) => em.addField(`${assoc.get(name)} - ${name}`, "`" + categ.map(c => c.name).join("`, `") + "`"), true);
+            categories.filter((_, n: string) => args.message.author.id == args.bot.config.ownerId ? true : n != 'System').forEach((categ: Command[], name: string) => em.addField(`${assoc.get(name)} - ${name}`, "`" + categ.map(c => c.name).join("`, `") + "`"), true);
             
             args.message.channel.send(em);
         } else if (args.bot.commands.has(args.args[0]) || args.bot.aliases.has(args.args[0])) {
@@ -41,7 +40,7 @@ export default class HelpCommand extends Command {
                 .setColor("#00FF00")
                 .addField("Usage : ", `\`${args.bot.config.prefix}${command.usage}\``, true)
                 .addField("A.k.a ?", command.aliases.length === 0 ? EMOJIS.XEMOJI : ("`" + command.aliases.join("`, `") + "`"), true)
-                .addField("Bot owner only : ", command.ownerOnly ? EMOJIS.OKEMOJI : EMOJIS.XEMOJI, true)
+                .addField("Bot owner only : ", command.ownerOnly ? EMOJIS.OKEMOJI : EMOJIS.XEMOJI, true);
             args.message.channel.send(embed);
         }
     }

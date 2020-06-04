@@ -64,6 +64,10 @@ export function ISO8601ToTime(iso: string): string {
     return iso.replace(/PT(\d+)M(\d+)S/, "$1.$2 minutes");
 }
 
+/**
+ * Renvoie le nombre avec une virgule tous les trois chiffres
+ * @param n Le nombre à formaté
+ */
 export function commaAllThe3(n: number | string): string {
     return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }

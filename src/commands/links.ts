@@ -4,8 +4,8 @@ import { MessageEmbed } from "discord.js";
 export default class LinksCommand extends Command {
     name = 'links';
     desc = 'Sends you some of important links for "Twice" stan.';
-    usage: string;
-    categorie: string;
+    usage = 'links';
+    categorie = 'Twice';
 
     async execute(args: CommandParams): Promise<void> {
         args.message.channel.send(new MessageEmbed()
