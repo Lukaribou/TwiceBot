@@ -21,14 +21,14 @@ export default class YTBAPI {
         };
     }
 
-    public async getVideosId(videoName: string, maxResults: number = 1): Promise<string[]> {
+    public async getVideosId(videoName: string, maxResults: number = 1): Promise<youtube_v3.Schema$SearchResult[]> {
         return new Promise((resolve, reject) => {
             this._data.youtube.search.list({
                 part: ['snippet'],
                 q: videoName,
                 maxResults: maxResults
             })
-                .then(res => resolve(res.data.items.map(v => v.id.videoId)))
+                .then(res => resolve(res.data.items))
                 .catch((err) => reject(err));
         });
     }
@@ -37,7 +37,7 @@ export default class YTBAPI {
         return new Promise(async (resolve, reject) => {
             this._data.youtube.videos.list({
                 part: ['snippet,statistics,contentDetails'],
-                id: (await this.getVideosId(song))
+                id: [...(await this.getVideosId(song)).shift().id.videoId]
             }, (err, res) => {
                 if (err) reject(err);
                 resolve(res.data.items.shift());
