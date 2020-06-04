@@ -47,8 +47,8 @@ export default class YTBAPI {
             }, (err, res) => {
                 if (err) reject(err);
                 resolve(res.data.items.shift());
-            })
-        })
+            });
+        });
     }
 
     /**
