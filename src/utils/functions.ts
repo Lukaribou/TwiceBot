@@ -38,6 +38,14 @@ export function getVideoURL(videoId: string): string {
 }
 
 /**
+ * Renvoie un lien vers la chaîne
+ * @param channelId L'id de la chaîne
+ */
+export function getChannelURL(channelId: string): string {
+    return `https://www.youtube.com/channel/${channelId}`;
+}
+
+/**
  * Renvoie le timestamp converti en minutes:secondes
  * @param s Le timestamp
  */
