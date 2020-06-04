@@ -17,6 +17,7 @@ export default class SearchCommand extends Command {
             .addField('🕐 Duration:', ISO8601ToTime(song.contentDetails.duration), true)
             .addField('📅 Published at:', new Date(song.snippet.publishedAt).toUTCString(), true)
             .addField('💿 Published by:', `[${song.snippet.channelTitle}](${getChannelURL(song.snippet.channelId)})`, true)
-            .addField('📊 Statistics:', `👁️ Views: \`${commaAllThe3(song.statistics.viewCount)}\`\n👍 Likes: \`${commaAllThe3(song.statistics.likeCount)}\`\n👎 Dislikes: \`${commaAllThe3(song.statistics.dislikeCount)}\`\n📝 Comments: \`${commaAllThe3(song.statistics.commentCount)}\``, true));
-    }
+            .addField('📊 Statistics:', `👁️ Views: \`${commaAllThe3(song.statistics.viewCount)}\`\n👍 Likes: \`${commaAllThe3(song.statistics.likeCount)}\`\n👎 Dislikes: \`${commaAllThe3(song.statistics.dislikeCount)}\`\n📝 Comments: \`${commaAllThe3(song.statistics.commentCount)}\``, true)
+            .setFooter(`Search for: "twice ${args.args.join(' ')}"`, args.bot.user.avatarURL()));
+        }
 }
