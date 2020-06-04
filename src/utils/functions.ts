@@ -55,3 +55,7 @@ export function msToTime(s: number): string {
 export function ISO8601ToTime(iso: string): string {
     return iso.replace(/PT(\d+)M(\d+)S/, "$1.$2 minutes");
 }
+
+export function commaAllThe3(n: number | string): string {
+    return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
