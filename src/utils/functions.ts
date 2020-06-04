@@ -36,3 +36,22 @@ export function generateBotInvitation(): string {
 export function getVideoURL(videoId: string): string {
     return `https://www.youtube.com/watch?v=${videoId}`;
 }
+
+/**
+ * Renvoie le timestamp converti en minutes:secondes
+ * @param s Le timestamp
+ */
+export function msToTime(s: number): string {
+    s = (s - s % 1000) / 1000;
+    let sec = s % 60;
+    s = (s - sec) / 60; 
+    return `${s % 60}:${sec}`;
+}
+
+/**
+ * Renvoie la durée formatée en "x.y minutes"
+ * @param iso Durée au format ISO 8601
+ */
+export function ISO8601ToTime(iso: string): string {
+    return iso.replace(/PT(\d+)M(\d+)S/, "$1.$2 minutes");
+}
