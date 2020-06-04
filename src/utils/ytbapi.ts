@@ -1,7 +1,4 @@
 import { google, youtube_v3 } from 'googleapis';
-import * as superagent from 'superagent'
-
-const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/videos'
 
 export interface IConfigYTBAPI {
     accessToken: string,
