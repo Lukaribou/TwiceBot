@@ -16,7 +16,7 @@ export class Bot extends Client { // extends Client = hérite des propriétés e
         this.ytbAPI = new YTBAPI(this.config.youtubeKey);
 
         this.run();
-    };
+    }
 
     async run(): Promise<void> {
         this.loadCommands();
@@ -25,11 +25,11 @@ export class Bot extends Client { // extends Client = hérite des propriétés e
         this.on("error", () => this.run()); // Si il y a une erreur on le redémarre
 
         await this.login(this.config.token);
-    };
+    }
 
     private loadCommands(): void {
         readdir(__dirname + "/commands", (err: NodeJS.ErrnoException, filenames: Array<string>) => {
-            if (err) { console.error(err.message); return; };
+            if (err) { console.error(err.message); return; }
             let jsfile = filenames.filter(f => f.split(".").pop() === "js");
             if (jsfile.length <= 0) return console.log("[LOGS] - 0 fichiers trouvés");
 
@@ -40,10 +40,10 @@ export class Bot extends Client { // extends Client = hérite des propriétés e
                     let pull = new (require(`./commands/${file}`).default)();
                     this.commands.set(pull.name, pull);
                     pull.aliases.forEach((alias: string) => this.aliases.set(alias, pull));
-                } catch (e) { console.log(e); };
+                } catch (e) { console.log(e); }
             });
         });
-    };
-};
+    }
+}
 
 export const bot: Bot = new Bot(new Config());

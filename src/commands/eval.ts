@@ -8,7 +8,7 @@ export default class EvalCommand extends Command {
     ownerOnly = true;
 
     async execute(args: CommandParams) {
-        if (args.message.author.id != args.bot.config.ownerId) { console.log(args.message.author.username + " a essayé de faire: " + args.message.content); return };
+        if (args.message.author.id != args.bot.config.ownerId) { console.log(args.message.author.username + " a essayé de faire: " + args.message.content); return }
 
         var test: boolean | string = args.args[0] == '-t' ? args.args.shift() : false // Si args.args[0] est égal à '-t' je l'enlève car sinon ça va faire buguer en dessous
         var toEval: string = args.args.join(" "); // On joint les éléments avec un espace
@@ -35,7 +35,7 @@ export default class EvalCommand extends Command {
                         timestamp: Date.now()
                     }
                 });
-            };
-        };
-    };
-};
+            }
+        }
+    }
+}

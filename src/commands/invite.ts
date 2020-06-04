@@ -9,5 +9,5 @@ export default class InviteCommand extends Command {
     
     async execute(args: CommandParams): Promise<void> {
         args.message.channel.send(`${EMOJIS.OKEMOJI} **Here's a link to invite me on your server:** \`${generateBotInvitation()}\``);
-    };
-};
+    }
+}

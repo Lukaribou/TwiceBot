@@ -10,6 +10,7 @@ export default class HelpCommand extends Command {
 
     async execute(args: CommandParams) {
         var assoc: Map<string, EmojiResolvable> = new Map()
+            .set('Twice', '😍')
             .set('Informations', 'ℹ️')
             .set('Other', '🤷‍♀️')
             .set('Moderation', EMOJIS.ADMINSEMOJI)
@@ -25,6 +26,7 @@ export default class HelpCommand extends Command {
 
             var em: MessageEmbed = new MessageEmbed()
                 .setAuthor(`Help page of ${args.bot.user.username}`, args.bot.user.avatarURL(), generateBotInvitation())
+                .setThumbnail(args.bot.user.avatarURL())
                 .setFooter(`${args.bot.commands.size} commands available.`);
 
             categories.forEach((categ: Command[], name: string) => em.addField(`${assoc.get(name)} - ${name}`, "`" + categ.map(c => c.name).join("`, `") + "`"), true);
@@ -35,11 +37,12 @@ export default class HelpCommand extends Command {
             var embed: MessageEmbed = new MessageEmbed()
                 .setAuthor(`Help for the command : ${assoc.get(command.categorie)} ${command.name}`, args.bot.user.avatarURL())
                 .setDescription("`Description :` " + command.desc)
+                .setThumbnail(args.bot.user.avatarURL())
                 .setColor("#00FF00")
-                .addField("Usage : ", `\`${args.bot.prefix}${command.usage}\``, true)
+                .addField("Usage : ", `\`${args.bot.config.prefix}${command.usage}\``, true)
                 .addField("A.k.a ?", command.aliases.length === 0 ? EMOJIS.XEMOJI : ("`" + command.aliases.join("`, `") + "`"), true)
                 .addField("Bot owner only : ", command.ownerOnly ? EMOJIS.OKEMOJI : EMOJIS.XEMOJI, true)
             args.message.channel.send(embed);
-        };
-    };
-};
+        }
+    }
+}

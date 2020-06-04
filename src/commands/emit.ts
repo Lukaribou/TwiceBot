@@ -8,7 +8,7 @@ export default class EmitCommand extends Command {
     botAdminsOnly = true;
 
     async execute(args: CommandParams) {
-        if (!args.args[0]) { args.message.channel.send(`${EMOJIS.XEMOJI} **The event to simulate is required as a parameter**`); return; }; // Si il n'y a pas d'argument 0
+        if (!args.args[0]) { args.message.channel.send(`${EMOJIS.XEMOJI} **The event to simulate is required as a parameter**`); return; } // Si il n'y a pas d'argument 0
 
         switch (args.args[0]) {
             case 'join':
@@ -19,6 +19,6 @@ export default class EmitCommand extends Command {
                 break;
             default:
                 args.message.channel.send(`${EMOJIS.XEMOJI} **This event does not exist or is not implemented in the bot.**`);
-        };
-    };
-};
+        }
+    }
+}
