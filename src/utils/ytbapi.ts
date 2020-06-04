@@ -18,6 +18,11 @@ export default class YTBAPI {
         };
     }
 
+    /**
+     * Renvoie les identifiants des premières vidéos trouvées avec le nom
+     * @param videoName Le nom de ce qui doit être cherché
+     * @param maxResults Nombre de résultats à renvoyer (default à 1)
+     */
     public async getVideosId(videoName: string, maxResults: number = 1): Promise<youtube_v3.Schema$SearchResult[]> {
         return new Promise((resolve, reject) => {
             this._data.youtube.search.list({
@@ -30,11 +35,15 @@ export default class YTBAPI {
         });
     }
 
-    public async searchSong(song: string): Promise<youtube_v3.Schema$Video> {
+    /**
+     * Renvoie les informations suivantes sur la vidéo: snippet, statistics, fileDetails
+     * @param song Titre de la musique
+     */
+    public async searchSong(song: string, alreadyVideoId: boolean = false): Promise<youtube_v3.Schema$Video> {
         return new Promise(async (resolve, reject) => {
             this._data.youtube.videos.list({
                 part: ['snippet,statistics,contentDetails'],
-                id: [...(await this.getVideosId(song)).shift().id.videoId]
+                id: alreadyVideoId ? [song] : [(await this.getVideosId(song)).shift().id.videoId]
             }, (err, res) => {
                 if (err) reject(err);
                 resolve(res.data.items.shift());
@@ -42,6 +51,9 @@ export default class YTBAPI {
         })
     }
 
+    /**
+     * Renvoie la propriété _data de l'instance en cours
+     */
     public getYtbAPIData(): IConfigYTBAPI {
         return this._data;
     }
