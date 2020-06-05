@@ -26,7 +26,7 @@ export default class HelpCommand extends Command {
             var em: MessageEmbed = new MessageEmbed()
                 .setAuthor(`Help page of ${args.bot.user.username}`, args.bot.user.avatarURL(), generateBotInvitation())
                 .setThumbnail(args.bot.user.avatarURL())
-                .setFooter(`${args.bot.commands.size} commands available.`);
+                .setFooter(`${args.bot.commands.size} commands available. ${EMOJIS.OWNERONLYEMOJI} = the command is ownerOnly.`);
 
             categories.filter((_, n: string) => args.message.author.id == args.bot.config.ownerId ? true : n != 'System').forEach((categ: Command[], name: string) => em.addField(`${assoc.get(name)} - ${name}`, "`" + categ.map(c => c.name).join("`, `") + "`"), true);
             
