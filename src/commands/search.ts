@@ -1,4 +1,4 @@
-import { Command, CommandParams } from "../utils/structs";
+import { Command, CommandParams, EMOJIS } from "../utils/structs";
 import { youtube_v3 } from "googleapis";
 import { MessageEmbed } from "discord.js";
 import { getVideoURL, ISO8601ToTime, commaAllThe3, getChannelURL } from "../utils/functions";
@@ -10,6 +10,7 @@ export default class SearchCommand extends Command {
     categorie = 'Twice';
 
     async execute(args: CommandParams): Promise<void> {
+        if (!args.args[0]) { args.message.channel.send(`${EMOJIS.X} **You need to provide at least one word of the song that you search !**`); return; }
         var song: youtube_v3.Schema$Video = await args.bot.ytbAPI.searchSong(['twice', ...args.args].join(' '));
         args.message.channel.send(new MessageEmbed()
             .setAuthor(`${song.snippet.title.replace(/&quot;/g, '"')} ⬅️ Click to go !`, song.snippet.thumbnails.default.url, getVideoURL(song.id))
@@ -19,5 +20,5 @@ export default class SearchCommand extends Command {
             .addField('💿 Published by:', `[${song.snippet.channelTitle}](${getChannelURL(song.snippet.channelId)})`, true)
             .addField('📊 Statistics:', `👁️ Views: \`${commaAllThe3(song.statistics.viewCount)}\`\n👍 Likes: \`${commaAllThe3(song.statistics.likeCount)}\`\n👎 Dislikes: \`${commaAllThe3(song.statistics.dislikeCount)}\`\n📝 Comments: \`${commaAllThe3(song.statistics.commentCount)}\``, true)
             .setFooter(`Search for: "twice ${args.args.join(' ')}"`, args.bot.user.avatarURL()));
-        }
+    }
 }

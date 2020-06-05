@@ -8,6 +8,6 @@ export default class InviteCommand extends Command {
     categorie = "Other";
     
     async execute(args: CommandParams): Promise<void> {
-        args.message.channel.send(`${EMOJIS.OKEMOJI} **Here's a link to invite me on your server:** \`${generateBotInvitation()}\``);
+        args.message.channel.send(`${EMOJIS.OK} **Here's a link to invite me on your server:** \`${generateBotInvitation()}\``);
     }
 }

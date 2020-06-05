@@ -12,6 +12,7 @@ export abstract class Command {
 }
 
 export const confdb = require("../../database/config.json");
+export const twiceInfosdb = require("../../database/TwiceInformations.json");
 
 export interface CommandParams {
     args: string[]; // Les args c'est le message qu'on coupe à chaque espace
@@ -27,11 +28,12 @@ export class Config {
 }
 
 export enum EMOJIS {
-    OKEMOJI = "✅",
-    XEMOJI = "❌",
-    WARNINGEMOJI = "⚠",
+    OK = "✅",
+    X = "❌",
+    WARNING = "⚠",
     RIGHTARROW = "➡",
-    TADAEMOJI = "🎉",
-    ADMINSEMOJI = "🚔",
-    OWNERONLYEMOJI = "🔐"
+    TADA = "🎉",
+    ADMINS = "🚔",
+    OWNERONLY = "🔐",
+    THINKING = "🤔"
 }
