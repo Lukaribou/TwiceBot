@@ -1,4 +1,5 @@
-import { Command, CommandParams } from "../utils/structs";
+import { Command, CommandParams, EMOJIS, twiceInfosdb } from "../utils/structs";
+import { MessageEmbed, MessageAttachment } from "discord.js";
 
 export default class MemberCommand extends Command {
     name = 'member';
@@ -7,8 +8,18 @@ export default class MemberCommand extends Command {
     categorie: string;
 
     async execute(args: CommandParams): Promise<void> {
+        if (!args.args[0]) { args.message.channel.send(`${EMOJIS.X} **You need to provide the name of a member !**`); return; }
+        if (!twiceInfosdb.group.members.map((x: string) => x.toLowerCase()).includes(args.args[0].toLowerCase())) { args.message.channel.send(`${EMOJIS.X} **The name you provided does not appear in my database ${EMOJIS.THINKING} !**`); return; }
+        
+        var member: Member = twiceInfosdb.members[args.args[0]];
+        const img = new MessageAttachment(`res/membersImg/${member.name.stage.latin.toLowerCase()}.jpg`);
 
+        args.message.channel.send({
+            embed: new MessageEmbed().setImage(`attachment://${member.name.stage.latin.toLowerCase()}.jpg`),
+            files: [img]
+        });
     }
+    // Ajouter la source: https://kprofiles.com/twice-members-profile/
 }
 
 export function cmToFeets(height: number): string {
@@ -32,8 +43,7 @@ export interface Member {
             latin: string,
             korean: string,
             native?: string // ex: 湊崎 紗夏
-        },
-        nicknames: string[]
+        }
     },
     emoji: string,
     height: number,
