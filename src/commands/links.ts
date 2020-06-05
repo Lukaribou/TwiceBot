@@ -14,6 +14,7 @@ export default class LinksCommand extends Command {
         .addField("Twice's YouTube channel:", "[Twice's YouTube channel](https://www.youtube.com/channel/UCzgxx_DM2Dcb9Y1spb9mUJA) [JYP's YouTube channel](https://www.youtube.com/jypentertainment)", true)
         .addField("Twice's VLive:", "[VLive](https://channels.vlive.tv/EDBF/home)")
         .addField("Twice's Fan's page", "[Fan's page](https://fans.jype.com/Portal)", true)
+        .addField("Twice's Fan Cafe:", "[Fan Cafe](http://cafe.daum.net/TWICE9)", true)
         .addField("Twice's Twitter:", "[Twitter page](https://twitter.com/JYPETWICE)", true)
         .addField("Twice's Instagram:", "[Twicetagram](https://www.instagram.com/twicetagram/)", true)
         .addField("Twice's Facebook", "[Facebook](https://www.facebook.com/JYPETWICE)", true)
