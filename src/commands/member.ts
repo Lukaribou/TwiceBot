@@ -7,7 +7,7 @@ export default class MemberCommand extends Command {
     categorie: string;
 
     async execute(args: CommandParams): Promise<void> {
-        
+
     }
 }
 
@@ -19,7 +19,9 @@ export interface Member {
     birth: {
         date: string, // ex: December 29, 1996
         town: string, // ex: Osaka
-        country: string // ex: Japan (télécharger un drapeau du Japon et le mettre en Thumbnail)
+        country: string, // ex: Japan (télécharger un drapeau du Japon et le mettre en Thumbnail)
+        chineseSigne: string,
+        zodiacSign: string
     },
     name: {
         stage: {
@@ -35,6 +37,9 @@ export interface Member {
     },
     emoji: string,
     height: number,
-    color: string,
+    color: {
+        name: string,
+        code: string
+    }
     position: string[]
 }
