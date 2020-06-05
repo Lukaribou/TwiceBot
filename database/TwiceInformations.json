@@ -1,0 +1,245 @@
+{
+    "group": {
+        "members": ["Nayeon", "Jeongyeon", "Momo", "Sana", "Jihyo", "Dahyun", "Chaeyoung", "Tzuyu"]
+    },
+    "members": {
+        "sana": {
+            "birth": {
+                "date": "December 29, 1996",
+                "town": "Tennōji-ku, Osaka",
+                "country": "Japan",
+                "chineseSigne": "Rat",
+                "zodiacSign": "Capricorn"
+            },
+            "name": {
+                "stage": {
+                    "latin": "Sana",
+                    "korean": "사나"
+                },
+                "full": {
+                    "latin": "Minatozaki Sana",
+                    "korean": "미나토자키 사나",
+                    "native": "湊崎 紗夏"
+                }
+            },
+            "emoji": "🐹",
+            "height": 168,
+            "color": {
+                "name": "Purple",
+                "code": "#7c62a3"
+            },
+            "position": ["Sub Vocalist"]
+        },
+        "dahyun": {
+            "birth": {
+                "date": "May 28, 1998",
+                "town": "Seongnam, Gyeonggi-do",
+                "country": "South Korea",
+                "chineseSigne": "Tiger",
+                "zodiacSign": "Gemini"
+            },
+            "name": {
+                "stage": {
+                    "latin": "Dahyun",
+                    "korean": "다현"
+                },
+                "full": {
+                    "latin": "Kim Da Hyun",
+                    "korean": "김다현"
+                }
+            },
+            "emoji": "🦅",
+            "height": 159,
+            "color": {
+                "name": "White",
+                "code": "#FFFFFF"
+            },
+            "position": ["Lead Rapprt, Sub Vocalist"]
+        },
+        "tzuyu": {
+            "birth": {
+                "date": "June 14, 1999",
+                "town": "Tainan",
+                "country": "Taiwan",
+                "chineseSigne": "Rabbit",
+                "zodiacSign": "Gemini"
+            },
+            "name": {
+                "stage": {
+                    "latin": "Tzuyu",
+                    "korean": "쯔위"
+                },
+                "full": {
+                    "latin": "Chou Tzuyu",
+                    "korean": "주자유",
+                    "native": "周子瑜"
+                }
+            },
+            "emoji": "🐶",
+            "height": 170,
+            "color": {
+                "name": "Blue",
+                "code": "#a0c4f2"
+            },
+            "position": ["Lead Dancer, Sub Vocalist, Visual, Maknae"]
+        },
+        "mina": {
+            "birth": {
+                "date": "March 24, 1997",
+                "town": "San Antonio, Texas",
+                "country": "USA (she moved to Japan when she was a toddler)",
+                "chineseSigne": "Ox",
+                "zodiacSign": "Aries"
+            },
+            "name": {
+                "stage": {
+                    "latin": "Mina",
+                    "korean": "미나"
+                },
+                "full": {
+                    "latin": "Myoui Mina ||| Sharon (english name)",
+                    "korean": "묘이 미나",
+                    "native": "名井 南"
+                }
+            },
+            "emoji": "🐧",
+            "height": 163,
+            "color": {
+                "name": "Mint",
+                "code": "#87ccb5"
+            },
+            "position": ["Main Dancer, Sub Vocalist"]
+        },
+        "momo": {
+            "birth": {
+                "date": "November 9, 1996",
+                "town": "Kyōtanabe, Kyoto",
+                "country": "Japan",
+                "chineseSigne": "Rat",
+                "zodiacSign": "Scorpio"
+            },
+            "name": {
+                "stage": {
+                    "latin": "Momo",
+                    "korean": "모모"
+                },
+                "full": {
+                    "latin": "Hirai Momo",
+                    "korean": "히라이 모모",
+                    "native": "平井 もも"
+                }
+            },
+            "emoji": "🍑",
+            "height": 162,
+            "color": {
+                "name": "Pink",
+                "code": "#e4979d"
+            },
+            "position": ["Main Dancer, Sub Vocalist, Sub Rapper"]
+        },
+        "nayeon": {
+            "birth": {
+                "date": "September 22, 1995",
+                "town": "Seoul",
+                "country": "South Korea",
+                "chineseSigne": "Pig",
+                "zodiacSign": "Virgo"
+            },
+            "name": {
+                "stage": {
+                    "latin": "Nayeon",
+                    "korean": "나연"
+                },
+                "full": {
+                    "latin": "Im Na Yeon",
+                    "korean": "임나연"
+                }
+            },
+            "emoji": "🐰",
+            "height": 163,
+            "color": {
+                "name": "Sky Blue",
+                "code": "#5dbed7"
+            },
+            "position": ["Lead Vocalist, Lead Dancer, Center"]
+        },
+        "chaeyoung": {
+            "birth": {
+                "date": "April 23, 1999",
+                "town": "Seoul",
+                "country": "South Korea",
+                "chineseSigne": "Rabbit",
+                "zodiacSign": "Taurus"
+            },
+            "name": {
+                "stage": {
+                    "latin": "Chaeyoung",
+                    "korean": "채영"
+                },
+                "full": {
+                    "latin": "Son Chae Young",
+                    "korean": "손채영"
+                }
+            },
+            "emoji": "🐯",
+            "height": 159,
+            "color": {
+                "name": "Red",
+                "code": "#f76454"
+            },
+            "position": ["Main Rapper, Sub Vocalist"]
+        },
+        "jihyo": {
+            "birth": {
+                "date": "February 1, 1997",
+                "town": "Guri, Gyeonggi-d",
+                "country": "South Korea",
+                "chineseSigne": "Ox",
+                "zodiacSign": "Aquarius"
+            },
+            "name": {
+                "stage": {
+                    "latin": "Jihyo",
+                    "korean": "지효"
+                },
+                "full": {
+                    "latin": "Park Ji Soo (she legalized her name to Park Ji Hyo)",
+                    "korean": "박지수 ====> 박지효"
+                }
+            },
+            "emoji": "🦄",
+            "height": 160,
+            "color": {
+                "name": "Apricot",
+                "code": "#eb8038"
+            },
+            "position": ["Leader, Main Vocalist"]
+        },
+        "jeongyeon": {
+            "birth": {
+                "date": "November 1, 1996",
+                "town": "Suwon",
+                "country": "South Korea",
+                "chineseSigne": "Rat",
+                "zodiacSign": "Scorpio"
+            },
+            "name": {
+                "stage": {
+                    "latin": "Jeongyeon",
+                    "korean": "정연"
+                },
+                "full": {
+                    "latin": "Yoo Kyung Wan (she legalized her name to Yoo Jeong Yeon)",
+                    "korean": "유경완 ====> 유정연"
+                }
+            },
+            "emoji": "🎷",
+            "height": 168,
+            "color": {
+                "name": "Yellow-Green",
+                "code": "#d6e65e"
+            },
+            "position": ["Lead Vocalist"]
+        }
+    }
+}
