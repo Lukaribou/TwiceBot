@@ -14,13 +14,14 @@ export default class MemberCommand extends Command {
         var member: Member = twiceInfosdb.members[args.args[0]];
         const img = new MessageAttachment(`res/membersImg/${member.name.stage.latin.toLowerCase()}.jpg`, 'img.jpg');
         const thum = new MessageAttachment(`res/countryFlags/${member.name.stage.latin == 'Mina' ? 'american-japan' : member.birth.country.toLowerCase().replace(' ', '-')}-flag.jpg`, 'flag.jpg');
+        const logo = new MessageAttachment('res/logo.png', 'logo.png');
 
         args.message.channel.send({
             embed: new MessageEmbed()
-                .setImage(`attachment://img.jpg`)
-                .setAuthor(`Information about Twice ${member.name.stage.latin}`, "attachment://img.jpg", 'https://kprofiles.com/twice-members-profile/')
+                .setAuthor(`Information about Twice ${member.name.stage.latin}`, "attachment://logo.png", 'https://kprofiles.com/twice-members-profile/')
                 .setThumbnail("attachment://flag.jpg")
                 .setColor(member.color.code)
+                .setImage(`attachment://img.jpg`)
                 .addField("Stage name:", `Latin: \`${member.name.stage.latin}\`\nKorean: \`${member.name.stage.korean}\``, true)
                 .addField("Full name:", `Latin: \`${member.name.full.latin}\`\nKorean: \`${member.name.full.korean}\`${member.name.full.native ? `\nNative: \`${member.name.full.native}\`` : ''}`, true)
                 .addField("Birth:", `The \`${member.birth.date}\` (\`${calculateAge(member.birth.date)}\` years old) in \`${member.birth.town}\`.\nCountry: \`${member.birth.country}\`\nZodiac sign: \`${member.birth.zodiacSign}\`\nChinese sign: \`${member.birth.chineseSign}\``)
@@ -29,7 +30,7 @@ export default class MemberCommand extends Command {
                 .addField("Representative color:", `\`${member.color.name}\``, true)
                 .addField("Representative emoji:", member.emoji, true)
                 .setFooter(`information are from https://kprofiles.com/twice-members-profile/. If any of this information is false, please contact me: ${args.bot.users.cache.get(args.bot.config.ownerId).tag}.`, args.bot.users.cache.get(args.bot.config.ownerId).avatarURL()),
-            files: [img, thum]
+            files: [img, thum, logo]
         });
     }
     // Ajouter la source: https://kprofiles.com/twice-members-profile/
