@@ -9,7 +9,7 @@ export default class MemberCommand extends Command {
 
     async execute(args: CommandParams): Promise<void> {
         if (!args.args[0]) { args.message.channel.send(`${EMOJIS.X} **You need to provide the name of a member !**`); return; }
-        if (!twiceInfosdb.group.members.map((x: string) => x.toLowerCase()).includes(args.args[0].toLowerCase())) { args.message.channel.send(`${EMOJIS.X} **The name you provided does not appear in my database ${EMOJIS.THINKING} !**`); return; }
+        if (!twiceInfosdb.group.members.map((x: string) => x.toLowerCase()).includes(args.args[0].toLowerCase())) { args.message.channel.send(`${EMOJIS.X} **The name you provided does not appear in my database ${EMOJIS.THINKING} ! Try with the latin stage name...**`); return; }
 
         var member: Member = twiceInfosdb.members[args.args[0]];
         const img = new MessageAttachment(`res/membersImg/${member.name.stage.latin.toLowerCase()}.jpg`, 'img.jpg');
@@ -26,7 +26,7 @@ export default class MemberCommand extends Command {
                 .addField("Birth:", `The \`${member.birth.date}\` in \`${member.birth.town}\`.\nCountry: \`${member.birth.country}\`\nZodiac sign: \`${member.birth.zodiacSign}\`\nChinese sign: \`${member.birth.chineseSign}\``)
                 .addField("Position(s):", `\`${member.position.join(", ")}\``)
                 .addField("Height:", `\`${member.height}cm (${cmToFeets(member.height)})\``, true)
-                .addField("Representative color:", member.color.name, true)
+                .addField("Representative color:", `\`${member.color.name}\``, true)
                 .addField("Representative emoji:", member.emoji, true)
                 .setFooter(`Informations are from https://kprofiles.com/twice-members-profile/. If any of this information is false, please contact me: ${args.bot.users.cache.get(args.bot.config.ownerId).tag}.`, args.bot.users.cache.get(args.bot.config.ownerId).avatarURL()),
             files: [img, thum]
