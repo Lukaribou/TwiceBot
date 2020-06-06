@@ -10,20 +10,33 @@ export default class MemberCommand extends Command {
     async execute(args: CommandParams): Promise<void> {
         if (!args.args[0]) { args.message.channel.send(`${EMOJIS.X} **You need to provide the name of a member !**`); return; }
         if (!twiceInfosdb.group.members.map((x: string) => x.toLowerCase()).includes(args.args[0].toLowerCase())) { args.message.channel.send(`${EMOJIS.X} **The name you provided does not appear in my database ${EMOJIS.THINKING} !**`); return; }
-        
+
         var member: Member = twiceInfosdb.members[args.args[0]];
-        const img = new MessageAttachment(`res/membersImg/${member.name.stage.latin.toLowerCase()}.jpg`);
+        const img = new MessageAttachment(`res/membersImg/${member.name.stage.latin.toLowerCase()}.jpg`, 'img.jpg');
+        const thum = new MessageAttachment(`res/countryFlags/${member.name.stage.latin == 'Mina' ? 'american-japan' : member.birth.country.toLowerCase().replace(' ', '-')}-flag.jpg`, 'flag.jpg');
 
         args.message.channel.send({
-            embed: new MessageEmbed().setImage(`attachment://${member.name.stage.latin.toLowerCase()}.jpg`),
-            files: [img]
+            embed: new MessageEmbed()
+                .setImage(`attachment://img.jpg`)
+                .setAuthor(`Information about Twice ${member.name.stage.latin}`, "attachment://img.jpg", 'https://kprofiles.com/twice-members-profile/')
+                .setThumbnail("attachment://flag.jpg")
+                .setColor(member.color.code)
+                .addField("Stage name:", `Latin: \`${member.name.stage.latin}\`\nKorean: \`${member.name.stage.korean}\``, true)
+                .addField("Full name:", `Latin: \`${member.name.full.latin}\`\nKorean: \`${member.name.full.korean}\`${member.name.full.native ? `\nNative: \`${member.name.full.native}\`` : ''}`, true)
+                .addField("Birth:", `The \`${member.birth.date}\` in \`${member.birth.town}\`.\nCountry: \`${member.birth.country}\`\nZodiac sign: \`${member.birth.zodiacSign}\`\nChinese sign: \`${member.birth.chineseSign}\``)
+                .addField("Position(s):", `\`${member.position.join(", ")}\``)
+                .addField("Height:", `\`${member.height}cm (${cmToFeets(member.height)})\``, true)
+                .addField("Representative color:", member.color.name, true)
+                .addField("Representative emoji:", member.emoji, true)
+                .setFooter(`Informations are from https://kprofiles.com/twice-members-profile/. If any of this information is false, please contact me: ${args.bot.users.cache.get(args.bot.config.ownerId).tag}.`, args.bot.users.cache.get(args.bot.config.ownerId).avatarURL()),
+            files: [img, thum]
         });
     }
     // Ajouter la source: https://kprofiles.com/twice-members-profile/
 }
 
 export function cmToFeets(height: number): string {
-    return (height / 30.48).toFixed(2);
+    return (height / 30.48).toFixed(2).replace('.', "'").concat('"');
 }
 
 export interface Member {
@@ -31,7 +44,7 @@ export interface Member {
         date: string, // ex: December 29, 1996
         town: string, // ex: Osaka
         country: string, // ex: Japan (télécharger un drapeau du Japon et le mettre en Thumbnail)
-        chineseSigne: string,
+        chineseSign: string,
         zodiacSign: string
     },
     name: {
