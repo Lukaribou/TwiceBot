@@ -5,7 +5,7 @@ import { getVideoURL, ISO8601ToTime, commaAllThe3, getChannelURL } from "../util
 
 export default class SearchCommand extends Command {
     name = 'search';
-    desc = 'Search a Twice song on YouTube and display informations about it';
+    desc = 'Search a Twice song on YouTube and display information about it.';
     usage = 'search <title (don\'t put "Twice" before)>';
     categorie = 'Twice';
 

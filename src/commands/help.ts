@@ -4,14 +4,14 @@ import { generateBotInvitation } from "../utils/functions";
 
 export default class HelpCommand extends Command {
     name = "help";
-    categorie = "Informations";
-    desc = "Displays bot commands";
+    categorie = "Information";
+    desc = "Displays bot commands.";
     usage = "help <command/nothing>";
 
     async execute(args: CommandParams) {
         var assoc: Map<string, EmojiResolvable> = new Map()
             .set('Twice', '😍')
-            .set('Informations', 'ℹ️')
+            .set('Information', 'ℹ️')
             .set('Other', '🤷‍♀️')
             .set('System', '🔧');
 

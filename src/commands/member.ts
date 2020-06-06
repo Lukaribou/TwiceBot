@@ -3,9 +3,9 @@ import { MessageEmbed, MessageAttachment } from "discord.js";
 
 export default class MemberCommand extends Command {
     name = 'member';
-    desc = 'Displays informations about a member of Twice.';
-    usage = '';
-    categorie: string;
+    desc = 'Displays information about a member of Twice.';
+    usage = 'member <latin stage name>';
+    categorie = 'Twice';
 
     async execute(args: CommandParams): Promise<void> {
         if (!args.args[0]) { args.message.channel.send(`${EMOJIS.X} **You need to provide the name of a member !**`); return; }
@@ -23,16 +23,20 @@ export default class MemberCommand extends Command {
                 .setColor(member.color.code)
                 .addField("Stage name:", `Latin: \`${member.name.stage.latin}\`\nKorean: \`${member.name.stage.korean}\``, true)
                 .addField("Full name:", `Latin: \`${member.name.full.latin}\`\nKorean: \`${member.name.full.korean}\`${member.name.full.native ? `\nNative: \`${member.name.full.native}\`` : ''}`, true)
-                .addField("Birth:", `The \`${member.birth.date}\` in \`${member.birth.town}\`.\nCountry: \`${member.birth.country}\`\nZodiac sign: \`${member.birth.zodiacSign}\`\nChinese sign: \`${member.birth.chineseSign}\``)
+                .addField("Birth:", `The \`${member.birth.date}\` (\`${calculateAge(member.birth.date)}\` years old) in \`${member.birth.town}\`.\nCountry: \`${member.birth.country}\`\nZodiac sign: \`${member.birth.zodiacSign}\`\nChinese sign: \`${member.birth.chineseSign}\``)
                 .addField("Position(s):", `\`${member.position.join(", ")}\``)
                 .addField("Height:", `\`${member.height}cm (${cmToFeets(member.height)})\``, true)
                 .addField("Representative color:", `\`${member.color.name}\``, true)
                 .addField("Representative emoji:", member.emoji, true)
-                .setFooter(`Informations are from https://kprofiles.com/twice-members-profile/. If any of this information is false, please contact me: ${args.bot.users.cache.get(args.bot.config.ownerId).tag}.`, args.bot.users.cache.get(args.bot.config.ownerId).avatarURL()),
+                .setFooter(`information are from https://kprofiles.com/twice-members-profile/. If any of this information is false, please contact me: ${args.bot.users.cache.get(args.bot.config.ownerId).tag}.`, args.bot.users.cache.get(args.bot.config.ownerId).avatarURL()),
             files: [img, thum]
         });
     }
     // Ajouter la source: https://kprofiles.com/twice-members-profile/
+}
+
+export function calculateAge(date: string) {
+    return Math.abs(new Date(Date.now() - new Date(date).getTime()).getUTCFullYear() - 1970); // 1970 car timestamp = commence 01/01/1970 ?
 }
 
 export function cmToFeets(height: number): string {

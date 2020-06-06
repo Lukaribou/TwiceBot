@@ -3,7 +3,7 @@ import { generateBotInvitation } from "../utils/functions";
 
 export default class InviteCommand extends Command {
     name = "invite";
-    desc = "Sends you a link to invite the bot in your server";
+    desc = "Sends you a link to invite the bot in your server.";
     usage = "invite";
     categorie = "Other";
     

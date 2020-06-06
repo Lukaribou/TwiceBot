@@ -3,7 +3,7 @@ import { Command, CommandParams, EMOJIS } from '../utils/structs'
 export default class EmitCommand extends Command {
     name = "emit";
     categorie = "System";
-    desc = "Simulates the event given in parameter if it is configured in the bot";
+    desc = "Simulates the event given in parameter if it is configured in the bot.";
     usage = "emit <event>";
     botAdminsOnly = true;
 

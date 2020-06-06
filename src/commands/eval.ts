@@ -2,7 +2,7 @@ import { Command, CommandParams } from "../utils/structs";
 
 export default class EvalCommand extends Command {
     name = 'eval';
-    desc = 'Evaluates the code given in parameter';
+    desc = 'Evaluates the code given in parameter.';
     categorie = 'System';
     usage = 'eval <code>';
     ownerOnly = true;
