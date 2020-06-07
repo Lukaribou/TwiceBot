@@ -1,4 +1,5 @@
 import SpotifyWebApi = require('spotify-web-api-node');
+import { resolve } from 'dns';
 
 export default class SpotifyAPI {
     private _data = {
@@ -49,6 +50,14 @@ export default class SpotifyAPI {
             this._spotifyWebApi.searchTracks(`track:${song} artist:Twice`, { limit: 1, offset: 0 })
                 .then((data) => data.body.tracks.items[0].artists[0].id == this._data.twiceChannelId ? resolve(data.body.tracks.items.shift()) : reject(new ChannelIDNotMatchError("The id of the artist in the search result doesn't match the id of Twice !")))
                 .catch((err) => reject(err));
+        });
+    }
+
+    public getTwiceTopTracks(): Promise<SpotifyApi.TrackObjectFull[]> {
+        return new Promise((resolve, reject) => {
+            this._spotifyWebApi.getArtistTopTracks(this._data.twiceChannelId, 'US')
+            .then((data) => resolve(data.body.tracks))
+            .catch((err) => reject(err));
         });
     }
 }
