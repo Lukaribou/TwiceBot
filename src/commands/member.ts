@@ -29,7 +29,7 @@ export default class MemberCommand extends Command {
                 .addField("Height:", `\`${member.height}cm (${cmToFeets(member.height)})\``, true)
                 .addField("Representative color:", `\`${member.color.name}\``, true)
                 .addField("Representative emoji:", member.emoji, true)
-                .setFooter(`information are from https://kprofiles.com/twice-members-profile/. If any of this information is false, please contact me: ${args.bot.users.cache.get(args.bot.config.ownerId).tag}.`, args.bot.users.cache.get(args.bot.config.ownerId).avatarURL()),
+                .setFooter(`Information are from https://kprofiles.com/twice-members-profile/. If any of this information is false, please contact me: ${args.bot.users.cache.get(args.bot.config.ownerId).tag}.`, args.bot.users.cache.get(args.bot.config.ownerId).avatarURL()),
             files: [img, thum, logo]
         });
     }

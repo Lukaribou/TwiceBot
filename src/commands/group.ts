@@ -19,7 +19,7 @@ export default class GroupCommand extends Command {
                 .setImage('attachment://group.jpg')
                 .setThumbnail('attachment://logo.png')
                 .setColor("#ff5fa2")
-                .setDescription('`TWICE` (`트와이스`) is a korean girlsband consisting of `9` members (from oldest to youngest): `' + twiceInfosdb.group.members.join('`, `') + '`')
+                .setDescription('`TWICE` (`트와이스`) is a korean girl group consisting of `9` members (from oldest to youngest): `' + twiceInfosdb.group.members.join('`, `') + '`')
                 .addField('Start:', '`October 20, 2015` (through the survival show `Sixteen`)', true)
                 .addField('Official colors:', '`Apricot` (`#FCC89B`) & `Neon Magenta` (`#FF5FA2`)', true)
                 .addField('Fandom name:', '`Once`', true)
