@@ -25,8 +25,6 @@ export default class SearchCommand extends Command {
 
         const e = (s: string) => `\`${s}\``; // Mettre entre ``
 
-        console.log(await args.bot.spotifyApi.getTwiceChannel())
-
         args.bot.spotifyApi.getTwiceSong(args.args.join(' '))
             .then((song) =>
                 args.message.channel.send(new MessageEmbed()
@@ -35,7 +33,7 @@ export default class SearchCommand extends Command {
                     .addField('💿 Album:', e(song.album.name), true)
                     .addField('🕐 Duration:', e(msToTime(song.duration_ms)), true)
                     .addField('📅 Published on:', e(song.album.release_date), true)
-                    .addField('⭐ Popularity:', `${e(song.popularity.toString())} ([Scroll to "popularity"](https://developer.spotify.com/documentation/web-api/reference/object-model/#track-object-full))`, true)
+                    .addField('⭐ Popularity:', `${e(song.popularity.toString())}/100 ([*Scroll to "popularity"*](https://developer.spotify.com/documentation/web-api/reference/object-model/#track-object-full))`, true)
                     .setFooter(`Search for: "twice ${args.args.join(' ')}"`, args.bot.user.avatarURL())))
             .catch((err) => args.message.channel.send(`${EMOJIS.X} **Error:** \`${err}\` *(Your search: twice ${args.args.join(' ')})*`));
     }
