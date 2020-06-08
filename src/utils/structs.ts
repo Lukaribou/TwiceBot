@@ -24,7 +24,9 @@ export class Config {
     token: string = confdb.token;
     ownerId: string = confdb.ownerId;
     prefix: string = confdb.prefix;
-    youtubeKey: string = confdb.youtubeKey
+    youtubeKey: string = confdb.youtubeKey;
+    spotifyClientId: string = confdb.spotifyClientId;
+    spotifyClientSecret: string = confdb.spotifyClientSecret;
 }
 
 export enum EMOJIS {

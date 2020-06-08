@@ -3,12 +3,14 @@ import { Command, Config } from "./utils/structs";
 import { readdir } from "fs";
 import { onReady, onMessage } from "./events";
 import YTBAPI from "./utils/ytbapi";
+import SpotifyAPI from "./utils/spotifyAPI";
 
 export class Bot extends Client { // extends Client = hérite des propriétés et méthodes de Discord.Client
     public commands: Collection<string, Command> = new Collection();
     public aliases: Collection<string, Command> = new Collection();
     public config: Config = undefined;
     public ytbAPI: YTBAPI = undefined;
+    public spotifyApi: SpotifyAPI = undefined;
 
     constructor(config: Config) {
         super({ disableMentions: 'everyone' }); // On empêche le bot de pouvoir faire des @everyone
@@ -25,6 +27,7 @@ export class Bot extends Client { // extends Client = hérite des propriétés e
         this.on("error", () => this.run()); // Si il y a une erreur on le redémarre
 
         await this.login(this.config.token);
+        this.spotifyApi = new SpotifyAPI(this.config.spotifyClientId, this.config.spotifyClientSecret);
     }
 
     private loadCommands(): void {
