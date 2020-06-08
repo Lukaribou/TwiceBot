@@ -1,13 +1,14 @@
 import { Client, Collection } from "discord.js";
 import { Command, Config } from "./utils/structs";
 import { readdir } from "fs";
-import { onReady, onMessage } from "./events";
+import { onReady, onMessage, onNewGuild, onExitGuild } from "./events";
 import YTBAPI from "./utils/ytbapi";
 import SpotifyAPI from "./utils/spotifyAPI";
 
 export class Bot extends Client { // extends Client = hérite des propriétés et méthodes de Discord.Client
     public commands: Collection<string, Command> = new Collection();
     public aliases: Collection<string, Command> = new Collection();
+    public cooldowns: Collection<string, Collection<string, number>> = new Collection();
     public config: Config = undefined;
     public ytbAPI: YTBAPI = undefined;
     public spotifyApi: SpotifyAPI = undefined;
@@ -25,6 +26,8 @@ export class Bot extends Client { // extends Client = hérite des propriétés e
         this.on("ready", onReady); // Déclenché quand le bot est connecté
         this.on("message", onMessage); // Quand un message est envoyé (soit au bot soit dans un salon)
         this.on("error", () => this.run()); // Si il y a une erreur on le redémarre
+        this.on("guildCreate", onNewGuild); // Nouveau serveur
+        this.on("guildDelete", onExitGuild); // Quitte un serveur (ou il est supprimé)
 
         await this.login(this.config.token);
         this.spotifyApi = new SpotifyAPI(this.config.spotifyClientId, this.config.spotifyClientSecret);

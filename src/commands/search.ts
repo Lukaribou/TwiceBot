@@ -7,6 +7,7 @@ export default class SearchCommand extends Command {
     desc = 'Search a Twice song on YouTube and display information about it.';
     usage = 'search <title (don\'t put "Twice" before)>';
     categorie = 'Twice';
+    cooldown = 3e4;
 
     async execute(args: CommandParams): Promise<void> {
         if (!args.args[0]) { args.message.channel.send(`${EMOJIS.X} **You need to provide at least one word of the song that you search !**`); return; }
