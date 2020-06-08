@@ -1,8 +1,6 @@
 import { Command, CommandParams, EMOJIS } from "../utils/structs";
-import { youtube_v3 } from "googleapis";
 import { MessageEmbed } from "discord.js";
-import { getVideoURL, ISO8601ToTime, commaAllThe3, getChannelURL, msToTime } from "../utils/functions";
-import { ChannelIDNotMatchError } from "../utils/spotifyAPI";
+import { msToTime } from "../utils/functions";
 
 export default class SearchCommand extends Command {
     name = 'search';
@@ -24,6 +22,7 @@ export default class SearchCommand extends Command {
         */
 
         const e = (s: string) => `\`${s}\``; // Mettre entre ``
+        const clean = (s: string) => s.split('').map((x: string) => x.replace('&', '').replace(' ', '')).join(''); // Mettre en forme le lien
 
         args.bot.spotifyApi.getTwiceSong(args.args.join(' '))
             .then((song) =>
@@ -34,6 +33,7 @@ export default class SearchCommand extends Command {
                     .addField('🕐 Duration:', e(msToTime(song.duration_ms)), true)
                     .addField('📅 Published on:', e(song.album.release_date), true)
                     .addField('⭐ Popularity:', `${e(song.popularity.toString())}/100 ([*Scroll to "popularity"*](https://developer.spotify.com/documentation/web-api/reference/object-model/#track-object-full))`, true)
+                    .addField('📄 Lyrcis:', `[Click here](https://www.azlyrics.com/lyrics/twice/${clean(song.name.toLowerCase())}.html)`, true)
                     .setFooter(`Search for: "twice ${args.args.join(' ')}"`, args.bot.user.avatarURL())))
             .catch((err) => args.message.channel.send(`${EMOJIS.X} **Error:** \`${err}\` *(Your search: twice ${args.args.join(' ')})*`));
     }
