@@ -27,10 +27,20 @@ export default class GroupCommand extends Command {
                 .addField('Official colors:', '`Apricot` (`#FCC89B`) & `Neon Magenta` (`#FF5FA2`)', true)
                 .addField('Fandom name:', '`Once`', true)
                 .addField('Labels:', '`JYP Entertainment`, `Warner Music Japan`, `Republic Records`', true)
+<<<<<<< Updated upstream
                 .addField('\u200b', '**__Spotify informations:__**')
                 .addField('Followers:', `\`${commaAllThe3(groupSpotifyInfos.followers.total)}\``, true)
                 .addField('Popularity:', `\`${groupSpotifyInfos.popularity}\`/100 ([*Scroll to "popularity"*](https://developer.spotify.com/documentation/web-api/reference/object-model/#artist-object-full))`, true)
                 .addField('Most played on USA (South Korea isn\'t available)', `\`${(await args.bot.spotifyApi.getTwiceTopTracks().catch()).slice(0, 5).map((music, index) => `${++index} - ${music.name}`).join('`\n`')}\``, true)
+=======
+<<<<<<< Updated upstream
+=======
+                .addField('\u200b', '**__Spotify informations:__**')
+                .addField('Followers:', `\`${commaAllThe3(groupSpotifyInfos.followers.total)}\``, true)
+                .addField('Popularity:', `\`${groupSpotifyInfos.popularity}\`/100 ([*Scroll to "popularity"*](https://developer.spotify.com/documentation/web-api/reference/object-model/#artist-object-full))`, true)
+                .addField('Most played in USA (South Korea isn\'t available)', `\`${(await args.bot.spotifyApi.getTwiceTopTracks().catch()).slice(0, 5).map((music, index) => `${++index} - ${music.name}`).join('`\n`')}\``, true)
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 .setFooter('NaJeongMoSaJiMiDaChaeTzu', 'attachment://jypeLogo.jpg'),
             files: [groupImg, twiceLogo, jypeLogo]
         });
