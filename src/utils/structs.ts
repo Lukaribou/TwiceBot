@@ -8,6 +8,7 @@ export abstract class Command {
     abstract categorie: string;
     ownerOnly: boolean = false; // De base on le met sur faux
     aliases: Array<string> = []; // De base les aliasses sont vides
+    cooldown: number = 1e3;
     abstract async execute(args: CommandParams): Promise<void>;
 }
 

@@ -6,6 +6,7 @@ export default class MemberCommand extends Command {
     desc = 'Displays information about a member of Twice.';
     usage = 'member <latin stage name>';
     categorie = 'Twice';
+    cooldown = 5e3
 
     async execute(args: CommandParams): Promise<void> {
         if (!args.args[0]) { args.message.channel.send(`${EMOJIS.X} **You need to provide the name of a member !**`); return; }

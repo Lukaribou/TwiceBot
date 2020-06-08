@@ -8,6 +8,7 @@ import SpotifyAPI from "./utils/spotifyAPI";
 export class Bot extends Client { // extends Client = hérite des propriétés et méthodes de Discord.Client
     public commands: Collection<string, Command> = new Collection();
     public aliases: Collection<string, Command> = new Collection();
+    public cooldowns: Collection<string, Collection<string, number>> = new Collection();
     public config: Config = undefined;
     public ytbAPI: YTBAPI = undefined;
     public spotifyApi: SpotifyAPI = undefined;

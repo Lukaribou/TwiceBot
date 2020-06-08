@@ -8,6 +8,7 @@ export default class GroupCommand extends Command {
     usage = 'group';
     categorie = 'Twice';
     aliases = ['band', 'twice']
+    cooldown = 1.5e4
 
     async execute(args: CommandParams): Promise<void> {
         const groupImg = new MessageAttachment("res/group.jpg", 'group.jpg');

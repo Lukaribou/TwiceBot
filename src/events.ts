@@ -1,5 +1,5 @@
 import { bot } from './index'
-import { Message } from 'discord.js'
+import { Message, Collection } from 'discord.js'
 import { Command, EMOJIS } from './utils/structs'
 
 export function onReady(): void {
@@ -13,10 +13,20 @@ export async function onMessage(message: Message): Promise<void> {
     if (message.content.trim() === `<@!${bot.user.id}>`) { message.channel.send(`${EMOJIS.RIGHTARROW} \`${bot.config.prefix}help\``); return; }
 
     const command: string = message.content.split(" ")[0].substring(bot.config.prefix.length);
-    const args: string[] = message.content.split(" ").slice(1);
+    const commandArgs: string[] = message.content.split(" ").slice(1);
+
+    if (!bot.cooldowns.has(message.author.id)) bot.cooldowns.set(message.author.id, new Collection());
+
+    console.log(bot.cooldowns)
 
     if (bot.commands.has(command) || bot.aliases.has(command)) {
         const comm: Command = bot.commands.get(command) || bot.aliases.get(command);
-        comm.execute({ args: args, message: message, bot: this }).catch().then(() => { if (!message.deleted) message.delete().catch() });
-    }
+        if (!bot.cooldowns.get(message.author.id).has(command)) {
+            comm.execute({ args: commandArgs, message: message, bot: this }).catch().then(() => {
+                if (!message.deleted) message.delete().catch();
+                bot.cooldowns.get(message.author.id).set(command, Date.now());
+                setTimeout(() => bot.cooldowns.get(message.author.id).delete(command), comm.cooldown);
+            });
+        } else message.channel.send(`${EMOJIS.X} **This command has a cooldown of \`${comm.cooldown / 1000}\` seconds. You need to wait \`${((bot.cooldowns.get(message.author.id).get(command) + comm.cooldown - Date.now()) / 1000).toFixed(1)}\` more seconds !**`)
+    } else message.channel.send(`${EMOJIS.X} **The command \`${command}\` doesn't exist...**`);
 }
