@@ -1,5 +1,4 @@
 import SpotifyWebApi = require('spotify-web-api-node');
-import { resolve } from 'dns';
 
 export default class SpotifyAPI {
     private _data = {
