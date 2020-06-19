@@ -17,8 +17,6 @@ export async function onMessage(message: Message): Promise<void> {
 
     if (!bot.cooldowns.has(message.author.id)) bot.cooldowns.set(message.author.id, new Collection());
 
-    console.log(bot.cooldowns)
-
     if (bot.commands.has(command) || bot.aliases.has(command)) {
         const comm: Command = bot.commands.get(command) || bot.aliases.get(command);
         if (!bot.cooldowns.get(message.author.id).has(command)) {
