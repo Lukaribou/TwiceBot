@@ -41,6 +41,6 @@ export default class HelpCommand extends Command {
                 .addField("A.k.a ?", command.aliases.length === 0 ? EMOJIS.X : ("`" + command.aliases.join("`, `") + "`"), true)
                 .addField("Bot owner only : ", command.ownerOnly ? EMOJIS.OK : EMOJIS.X, true);
             args.message.channel.send(embed);
-        } else args.message.channel.send(`${EMOJIS.X} **The \`${args.args[0]}\` command was not found.**`)
+        } else args.message.channel.send(`${EMOJIS.X} **The \`${args.args[0]}\` command was not found.**`);
     }
 }
